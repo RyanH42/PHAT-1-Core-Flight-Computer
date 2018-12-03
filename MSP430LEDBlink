@@ -1,0 +1,14 @@
+#include <msp430fr5994.h>
+ 
+int main(void) {
+  volatile int i;
+  
+  WDTCTL = WDTPW | WDTHOLD; //WDT stop
+  
+  P1DIR = 0x01; //last bit to output
+  P1OUT = 0x00; //last bit to 0
+ 
+  while(1) {
+    P1OUT ^= 0x01;
+  }
+}
